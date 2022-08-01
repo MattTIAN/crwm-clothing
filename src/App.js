@@ -1,5 +1,4 @@
-
-import './components/directory/directory-component.jsx'
+import "./components/directory/directory-component.jsx";
 import Directory from "./components/directory/directory-component.jsx";
 const App = () => {
   const categories = [
@@ -30,9 +29,7 @@ const App = () => {
     },
   ];
 
-  return (
-    <Directory categories={categories} />
-  );
+  return <Directory categories={categories} />;
 };
 
 export default App;
