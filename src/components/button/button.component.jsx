@@ -5,7 +5,7 @@ inverted
 Google sign in
 */
 const BUTTON_TYPE_CLASS = {
-  google: "google-sing-in",
+  google: "google-sign-in",
   inverted: "inverted",
 };
 const Button = ({ children, buttonType, ...otherProps }) => {
