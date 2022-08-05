@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState/* , useContext */ } from "react";
 import FormInput from "../form-input/form-input.component";
 import {
   createAuthUserWithEmailAndPassword,
@@ -6,6 +6,7 @@ import {
 } from "../../utils/firebase/firebase.util";
 import "./sign-up-form.styles.scss";
 import Button from "../button/button.component";
+// import { UserContext } from "../../context/user.context";
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -15,7 +16,8 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-  console.log(formFields);
+  // console.log("hit");
+  // const {setCurrentUser} = useContext(UserContext);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -25,7 +27,7 @@ const SignUpForm = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       alert("Your password do not match");
       return;
     }
@@ -35,6 +37,7 @@ const SignUpForm = () => {
         email,
         password
       );
+      // setCurrentUser(user);
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
@@ -82,9 +85,7 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button type="submit">
-          Sign up
-        </Button>
+        <Button type="submit">Sign up</Button>
       </form>
     </div>
   );
